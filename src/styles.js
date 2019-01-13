@@ -76,4 +76,25 @@ export default (theme) => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
+  listItemRoot: {
+    margin: '20px'
+  },
+  card: {
+    display: 'flex',
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  content: {
+    flex: '1 0 auto',
+  },
+  cover: {
+    width: '100%',
+  },
+  scrollableList: {
+    height: '100vh',
+    overflowY: 'scroll',
+    background: '#d2dadd'
+  }
 });
