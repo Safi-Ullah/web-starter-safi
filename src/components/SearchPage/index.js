@@ -23,6 +23,8 @@ class SearchPage extends Component {
     this.renderRestaurants = this.renderRestaurants.bind(this);
     this.handleRestaurantSelect = this.handleRestaurantSelect.bind(this);
     this.handleRestaurantQueryChange = this.handleRestaurantQueryChange.bind(this);
+    this.getCurrentLocation = this.getCurrentLocation.bind(this);
+    this.handleCurrentLocation = this.handleCurrentLocation.bind(this);
   }
 
   handleRestaurantSelect(restaurant) {
@@ -42,14 +44,20 @@ class SearchPage extends Component {
     }
   }
 
+  handleCurrentLocation(position) {
+    console.log(position);
+    this.setState({
+      searchQuery: {
+        lat: position.coords.latitude,
+        lon: position.coords.longitude
+      }
+    })
+  }
+
   renderRestaurants({ loading, error, data = {} }) {
     if (loading) {
       return <div className='loading-component'><CircularProgress /></div>;
     }
-
-    console.log('DO SOMETHING SMART WITH THIS DATA');
-    console.log('data', data);
-    console.log('error', error);
 
     // Make sure we have data
     if (
@@ -57,11 +65,14 @@ class SearchPage extends Component {
       && data.search_restaurants.results
       && data.search_restaurants.results.length > 0
     ) {
-      // this.setState({ restaurants: data.search_restaurants.results });
+      let userLocation = null;
+      if ('lat' in this.state.searchQuery && 'lon' in this.state.searchQuery)
+        userLocation = {
+          lon: this.state.searchQuery.lon, lat: this.state.searchQuery.lat
+        };
       return <RetaurantsList restaurants={data.search_restaurants.results}
         handleRestaurantSelect={this.handleRestaurantSelect}
-        handleRestaurantQueryChange={this.handleRestaurantQueryChange}
-        searchRestaurantQuery={this.state.searchRestaurantQuery}
+        userLocation={userLocation}
         selectedRestaurant={this.state.selectedRestaurant} />;
     }
 
@@ -69,12 +80,18 @@ class SearchPage extends Component {
     return <div>No Results</div>;
   }
 
+  getCurrentLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.handleCurrentLocation);
+    }
+  }
+
   render() {
     return (
-      // Variables can be either lat and lon OR address
       <div>
         <TitleBar
           handleRestaurantQueryChange={this.handleRestaurantQueryChange}
+          getCurrentLocation={this.getCurrentLocation}
           searchRestaurantQuery={this.state.searchQuery.address} />
         <Query
           query={RESTAURANT_SEARCH_QUERY}

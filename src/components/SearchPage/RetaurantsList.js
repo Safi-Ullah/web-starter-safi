@@ -19,7 +19,7 @@ class RestaurantsList extends Component {
     }
 
     render() {
-        const {restaurants, classes, selectedRestaurant} = this.props;
+        const {restaurants, classes, selectedRestaurant, userLocation} = this.props;
 
         return (
             <Grid container alignItems="center">
@@ -28,6 +28,7 @@ class RestaurantsList extends Component {
                 </Grid>
                 <Grid item xs={false} sm={8}>
                     <GoogleMap selectedRestaurant={selectedRestaurant}
+                        userLocation={userLocation}
                         restaurants={restaurants} isMarkerShown={true} />
                 </Grid>
             </Grid>
