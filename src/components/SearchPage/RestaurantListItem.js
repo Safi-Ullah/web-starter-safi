@@ -31,7 +31,7 @@ class RestaurantListItem extends Component {
                     </CardActionArea>
                     <CardMedia className={classes.cover}
                         src="img"
-                        image={restaurant.images.length >= 1 ? restaurant.images[0] : null} />
+                        image={restaurant.images ? restaurant.images[0] : null} />
                 </Card>
                 <div className={classes.leftMargin}>
                     <Typography component="p">
