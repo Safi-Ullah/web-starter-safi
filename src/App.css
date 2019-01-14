@@ -205,3 +205,14 @@ body {
   max-width: 161px;
   max-height: 50px;
 }
+.loading-component {
+  position: fixed !important;
+  margin: auto !important;
+  width: 40px;
+  height: 40px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9999;
+}
