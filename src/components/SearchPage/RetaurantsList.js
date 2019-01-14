@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import RestaurantListItem from './RestaurantListItem';
-import MyMapComponent from '../GoogleMapV3';
+import GoogleMap from '../GoogleMapV3';
 import styles from '../../styles';
 
 class RestaurantsList extends Component {
@@ -27,7 +27,7 @@ class RestaurantsList extends Component {
                     { restaurants.map(this.renderRestaurant) }
                 </Grid>
                 <Grid item xs={false} sm={8}>
-                    <MyMapComponent selectedRestaurant={selectedRestaurant}
+                    <GoogleMap selectedRestaurant={selectedRestaurant}
                         restaurants={restaurants} isMarkerShown={true} />
                 </Grid>
             </Grid>

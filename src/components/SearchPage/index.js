@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import TitleBar from './TitleBar';
 import { RESTAURANT_SEARCH_QUERY } from '../../graphql/queries';
 import RetaurantsList from './RetaurantsList';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 class SearchPage extends Component {
 
@@ -13,11 +14,15 @@ class SearchPage extends Component {
 
     this.state = {
       restaurants: [],
-      selectedRestaurant: null
+      selectedRestaurant: null,
+      searchQuery: {
+        address: 'Chicago'
+      }
     }
 
     this.renderRestaurants = this.renderRestaurants.bind(this);
     this.handleRestaurantSelect = this.handleRestaurantSelect.bind(this);
+    this.handleRestaurantQueryChange = this.handleRestaurantQueryChange.bind(this);
   }
 
   handleRestaurantSelect(restaurant) {
@@ -25,6 +30,16 @@ class SearchPage extends Component {
       selectedRestaurant: restaurant
     });
     this.props.history.push(`/rest/${restaurant.id}`);
+  }
+
+  handleRestaurantQueryChange(event) {
+    if(event.keyCode === 13) {
+      this.setState({
+        searchQuery: {
+          address: event.target.value
+        }
+      });
+    }
   }
 
   renderRestaurants({ loading, error, data = {} }) {
@@ -45,6 +60,8 @@ class SearchPage extends Component {
       // this.setState({ restaurants: data.search_restaurants.results });
       return <RetaurantsList restaurants={data.search_restaurants.results}
         handleRestaurantSelect={this.handleRestaurantSelect}
+        handleRestaurantQueryChange={this.handleRestaurantQueryChange}
+        searchRestaurantQuery={this.state.searchRestaurantQuery}
         selectedRestaurant={this.state.selectedRestaurant} />;
     }
 
@@ -56,12 +73,12 @@ class SearchPage extends Component {
     return (
       // Variables can be either lat and lon OR address
       <div>
+        <TitleBar
+          handleRestaurantQueryChange={this.handleRestaurantQueryChange}
+          searchRestaurantQuery={this.state.searchQuery.address} />
         <Query
           query={RESTAURANT_SEARCH_QUERY}
-          variables={{
-            address: 'Chicago'
-          }}
-        >
+          variables={this.state.searchQuery}>
           {this.renderRestaurants}
         </Query>
       </div>
