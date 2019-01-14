@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import RestaurantListItem from './RestaurantListItem';
-import MyMapComponent from '../MyMapComponent';
+import MyMapComponent from '../GoogleMapV3';
 import styles from '../../styles';
 
 class RestaurantsList extends Component {
@@ -14,7 +14,7 @@ class RestaurantsList extends Component {
     }
 
     renderRestaurant(restaurant) {
-        return <RestaurantListItem restaurant={restaurant}
+        return <RestaurantListItem restaurant={restaurant} key={restaurant.id}
             handleRestaurantSelect={this.props.handleRestaurantSelect}/>
     }
 

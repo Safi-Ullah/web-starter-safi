@@ -77,7 +77,8 @@ export default (theme) => ({
     textOverflow: 'ellipsis',
   },
   listItemRoot: {
-    margin: '20px'
+    margin: '20px',
+    borderRadius: '20px'
   },
   card: {
     display: 'flex',

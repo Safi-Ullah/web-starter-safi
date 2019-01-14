@@ -1,6 +1,6 @@
 import React from 'react';
-import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { compose, withProps } from "recompose";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 export default compose(
     withProps({
@@ -19,13 +19,11 @@ export default compose(
                 : { lat: 41.881832, lng: -87.623177 }
         }>
         {
-            props.isMarkerShown
-                ? <Marker position={
-                    props.selectedRestaurant 
-                        ? { lat: props.selectedRestaurant.lat, lng: props.selectedRestaurant.lon }
-                        : { lat: 41.881832, lng: -87.623177 }
-                    } />
-                : null
+            props.isMarkerShown && <Marker position={
+                props.selectedRestaurant
+                    ? { lat: props.selectedRestaurant.lat, lng: props.selectedRestaurant.lon }
+                    : { lat: 41.881832, lng: -87.623177 }
+            } />
         }
     </GoogleMap>
 );
