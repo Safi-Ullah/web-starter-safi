@@ -33,6 +33,7 @@ class TitleBar extends React.Component {
                             }}
                         />
                     </div>
+                    <Button color="inherit" onClick={this.props.getCurrentLocation}>Use my location</Button>
                     <div className={classes.grow} />
                     <Button color="inherit" className={classes.mobileHide}>Login</Button>
                     <Button color="inherit" className={classes.mobileHide}>Logout</Button>
