@@ -12,18 +12,13 @@ export default compose(
     withScriptjs,
     withGoogleMap
 )((props) =>
-    <GoogleMap defaultZoom={8}
-        center={
-            props.selectedRestaurant
-                ? { lat: props.selectedRestaurant.lat, lng: props.selectedRestaurant.lon }
-                : { lat: 41.881832, lng: -87.623177 }
-        }>
+    <GoogleMap defaultZoom={14} defaultCenter={{ lat: 41.881832, lng: -87.623177 }}>
         {
-            props.isMarkerShown && <Marker position={
-                props.selectedRestaurant
-                    ? { lat: props.selectedRestaurant.lat, lng: props.selectedRestaurant.lon }
-                    : { lat: 41.881832, lng: -87.623177 }
-            } />
+            props.isMarkerShown && props.restaurants
+                ? props.restaurants.map(restaurant => {
+                    return <Marker position={{ lat: restaurant.lat, lng: restaurant.lon }} />
+                })
+                : null
         }
     </GoogleMap>
 );

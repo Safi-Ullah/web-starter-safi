@@ -13,22 +13,33 @@ class RestaurantListItem extends Component {
         const {restaurant, classes} = this.props;
 
         return (
-            <Card className={[classes.card, classes.listItemRoot].join(' ')}>
-                <CardActionArea className={classes.details}
-                    onClick={() => this.props.handleRestaurantSelect(restaurant)}>
-                    <CardContent className={classes.content}>
-                        <Typography component="h5" variant="h5">
-                            {restaurant.title}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
-                            {restaurant.description}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-                <CardMedia className={classes.cover}
-                    src="img"
-                    image={restaurant.images[0]} />
-            </Card>
+            <div className={classes.listItemRoot}>
+                <Card className={classes.card}>
+                    <CardActionArea className={classes.details}
+                        onClick={() => this.props.handleRestaurantSelect(restaurant)}>
+                        <CardContent className={classes.content}>
+                            <Typography component="h5" variant="h5">
+                                {restaurant.title}
+                            </Typography>
+                            <Typography variant="subtitle1">
+                                {restaurant.description ? restaurant.description : 'N/A'}
+                            </Typography>
+                            <Typography component="p" color="textSecondary">
+                                {restaurant.address ? restaurant.address : 'N/A'}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardMedia className={classes.cover}
+                        src="img"
+                        image={restaurant.images.length >= 1 ? restaurant.images[0] : null} />
+                </Card>
+                <div className={classes.leftMargin}>
+                    <Typography component="p">
+                        { restaurant.open_closed ? `${restaurant.open_closed} . ` : null}
+                        { restaurant.distance ? `${parseFloat(restaurant.distance.toFixed(2))} miles away` : null}
+                    </Typography>
+                </div>
+            </div>
         );
     }
 }

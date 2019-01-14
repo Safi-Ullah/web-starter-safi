@@ -27,7 +27,8 @@ class RestaurantsList extends Component {
                     { restaurants.map(this.renderRestaurant) }
                 </Grid>
                 <Grid item xs={false} sm={8}>
-                    <MyMapComponent selectedRestaurant={selectedRestaurant} isMarkerShown={true} />
+                    <MyMapComponent selectedRestaurant={selectedRestaurant}
+                        restaurants={restaurants} isMarkerShown={true} />
                 </Grid>
             </Grid>
         );

@@ -77,11 +77,11 @@ export default (theme) => ({
     textOverflow: 'ellipsis',
   },
   listItemRoot: {
-    margin: '20px',
-    borderRadius: '20px'
+    margin: '20px'
   },
   card: {
     display: 'flex',
+    borderRadius: '20px'
   },
   details: {
     display: 'flex',
@@ -97,5 +97,8 @@ export default (theme) => ({
     height: '100vh',
     overflowY: 'scroll',
     background: '#d2dadd'
+  },
+  leftMargin: {
+    margin: '5px 0 0 15px'
   }
 });

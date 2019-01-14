@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { RESTAURANT_SEARCH_QUERY } from '../../graphql/queries';
 import RetaurantsList from './RetaurantsList';
+import { withRouter } from 'react-router-dom'
 
 class SearchPage extends Component {
 
@@ -22,6 +24,7 @@ class SearchPage extends Component {
     this.setState({
       selectedRestaurant: restaurant
     });
+    this.props.history.push(`/rest/${restaurant.id}`);
   }
 
   renderRestaurants({ loading, error, data = {} }) {
@@ -56,7 +59,7 @@ class SearchPage extends Component {
         <Query
           query={RESTAURANT_SEARCH_QUERY}
           variables={{
-            address: 'Manhattan'
+            address: 'Chicago'
           }}
         >
           {this.renderRestaurants}
@@ -66,4 +69,10 @@ class SearchPage extends Component {
   }
 }
 
-export default SearchPage;
+SearchPage.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+};
+
+export default withRouter(SearchPage);
