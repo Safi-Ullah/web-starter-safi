@@ -17,7 +17,7 @@ class RestaurantDetails extends React.Component {
 
         return (
             <Grid container alignItems="center" justify="center" className={classes.fullScreen}>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                     <Card className={classes.restaurantDetailsCard}>
                         <CardHeader
                             title={restaurant.title}
