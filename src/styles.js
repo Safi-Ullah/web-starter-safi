@@ -87,7 +87,6 @@ export default (theme) => ({
     textAlign: 'center'
   },
   restaurantDetailsCard: {
-    maxWidth: '500px',
     textAlign: 'center',
     borderRadius: '20px'
   },

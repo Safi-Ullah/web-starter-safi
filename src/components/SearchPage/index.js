@@ -25,6 +25,7 @@ class SearchPage extends Component {
     this.handleRestaurantQueryChange = this.handleRestaurantQueryChange.bind(this);
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
     this.handleCurrentLocation = this.handleCurrentLocation.bind(this);
+    this.handleLocationErrors = this.handleLocationErrors.bind(this);
   }
 
   handleRestaurantSelect(restaurant) {
@@ -79,9 +80,28 @@ class SearchPage extends Component {
     return <div>No Results</div>;
   }
 
+  handleLocationErrors(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED:
+        console.log("User denied the request for Geolocation");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        console.log("Location information is unavailable");
+        break;
+      case error.TIMEOUT:
+        console.log("The request to get user location timed out");
+        break;
+      case error.UNKNOWN_ERROR:
+        console.log("An unknown error occurred")
+        break;
+      default:
+        break;
+    }
+  }
+
   getCurrentLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.handleCurrentLocation);
+      navigator.geolocation.getCurrentPosition(this.handleCurrentLocation, this.handleLocationErrors);
     }
   }
 

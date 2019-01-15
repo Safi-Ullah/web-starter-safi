@@ -1,15 +1,51 @@
 # Foodsy
 This is the world's best food App.
 
-## Setup
-- Clone the code from the repo
-- Run `npm i` to install packages
+A simple react app that performs the following tasks:
 
-## Other Instructions
-- Please complete the tickets you've been assigned
-- Use separate branches for each ticket
-- Create pull requests for each branch and merge the pull requests into master once it is complete
-- Write clean, concise and readable code
-- Ensure your code lints cleanly with `npm run lint`
-- Use material design for components where possible
-- Update the README.md with any additional dependancies or setup instructions
+* `Search/List` restaurants in your area and using your current location
+* `Marks` the retrieved list on the map in desktop view
+* `Selecting` a certain restaurant displays restaurant details
+
+## Demo & Example
+
+You can find the live demo of the app [here](https://foodsy-demo.herokuapp.com)
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development.
+
+### Prerequisites
+
+Need to have node installed.
+
+### Installing
+
+First of all clone the project and move to that directory.
+
+```
+git clone https://github.com/Safi-Ullah/web-starter-safi.git
+cd ./web-starter-safi
+```
+
+Then in order to install the required node modules, run the following statement
+
+```
+npm install
+```
+
+### Starting
+
+You've got project all setup, now all you need to do is start the development server, that will run on port 3000 by default.
+
+```
+npm start
+```
+
+### Building
+
+In order to build project for deployment, run following statement
+
+```
+npm run build
+```
