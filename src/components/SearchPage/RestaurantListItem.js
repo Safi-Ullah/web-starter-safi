@@ -29,14 +29,17 @@ class RestaurantListItem extends Component {
                             </Typography>
                         </CardContent>
                     </CardActionArea>
-                    <CardMedia className={classes.cover}
-                        src="img"
-                        image={restaurant.images ? restaurant.images[0] : null} />
+                    {
+                        restaurant.images && restaurant.images.length >= 1
+                            ? <CardMedia className={classes.cover}
+                                image={restaurant.images[0]} />
+                            : null
+                    }
                 </Card>
                 <div className={classes.leftMargin}>
                     <Typography component="p">
-                        { restaurant.open_closed ? `${restaurant.open_closed} . ` : null}
-                        { restaurant.distance ? `${parseFloat(restaurant.distance.toFixed(2))} miles away` : null}
+                        { restaurant.open_closed && `${restaurant.open_closed} . ` }
+                        { restaurant.distance && `${parseFloat(restaurant.distance.toFixed(2))} miles away` }
                     </Typography>
                 </div>
             </div>

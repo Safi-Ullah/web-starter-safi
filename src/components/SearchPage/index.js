@@ -45,7 +45,6 @@ class SearchPage extends Component {
   }
 
   handleCurrentLocation(position) {
-    console.log(position);
     this.setState({
       searchQuery: {
         lat: position.coords.latitude,

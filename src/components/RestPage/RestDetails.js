@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-
 import { Query } from 'react-apollo';
-
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { RESTAURANT_QUERY } from '../../graphql/queries';
+import RestaurantDetails from './RestaurantDetails';
 
 class RestDetails extends Component {
 
@@ -18,14 +17,11 @@ class RestDetails extends Component {
       return <div className="loading-component"><CircularProgress /></div>;
     }
 
-    console.log('DO SOMETHING SMART WITH THIS DATA');
-    console.log('data', data);
-    console.log('error', error);
     // Make sure we have data
     if (data.restaurant) {
       return (
         <div className="rest-page">
-          {JSON.stringify(data.restaurant)}
+          <RestaurantDetails restaurant={data.restaurant} />
         </div>
       );
     }
