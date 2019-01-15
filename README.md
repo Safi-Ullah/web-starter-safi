@@ -4,12 +4,19 @@ This is the world's best food App.
 A simple react app that performs the following tasks:
 
 * `Search/List` restaurants in your area and using your current location
-* `Marks` the retrieved list on the map in desktop view
+* Your current location is encircled in a red circle
+* `Marks` the retrieved list of restaurants on the map in desktop view
 * `Selecting` a certain restaurant displays restaurant details
 
 ## Demo & Example
 
 You can find the live demo of the app [here](https://foodsy-demo.herokuapp.com)
+
+### Note:
+
+* `Use current location` feature might not work on the demo link provided above, as it is an insecure origin. Whereas it'll work properly on your end after setting up the project.
+
+* `Google maps` will alert that maps cannot be loaded correctly because billing/payment method has not yet been added for that api but it'll work enough to facilitate development. 
 
 ## Getting Started
 
