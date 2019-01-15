@@ -12,7 +12,7 @@ export default compose(
     withScriptjs,
     withGoogleMap
 )((props) =>
-    <GoogleMap defaultZoom={16}
+    <GoogleMap defaultZoom={15}
         center={
             props.userLocation
                 ? { lat: props.userLocation.lat, lng: props.userLocation.lon }
@@ -28,7 +28,15 @@ export default compose(
                 : null
         }
         {
-            props.userLocation && <Circle center={{ lat: props.userLocation.lat, lng: props.userLocation.lon }} radius={25} />
+            props.userLocation && <Circle center={{ lat: props.userLocation.lat, lng: props.userLocation.lon }}
+                radius={35}
+                options={{
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.6,
+                }} />
         }
     </GoogleMap>
 );

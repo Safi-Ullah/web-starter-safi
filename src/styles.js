@@ -83,6 +83,12 @@ export default (theme) => ({
   },
   card: {
     display: 'flex',
+    borderRadius: '20px',
+    textAlign: 'center'
+  },
+  restaurantDetailsCard: {
+    maxWidth: '500px',
+    textAlign: 'center',
     borderRadius: '20px'
   },
   details: {
@@ -158,5 +164,22 @@ export default (theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
+  },
+  visitBtn: {
+    marginLeft: 'auto',
+    [theme.breakpoints.up('sm')]: {
+      marginRight: -8,
+    },
+  },
+  fullScreen: {
+    height: '100vh',
+    background: '#d2dadd'
+  },
+  cardActions: {
+    display: 'flex'
+  },
+  cardMedia: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
   },
 });
