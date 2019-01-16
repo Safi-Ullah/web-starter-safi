@@ -101,7 +101,7 @@ export default (theme) => ({
     width: '100%',
   },
   scrollableList: {
-    height: '93vh',
+    height: 'calc(100vh - 64px)',
     overflowY: 'scroll',
     background: '#d2dadd'
   },

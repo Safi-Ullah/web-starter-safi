@@ -6,7 +6,7 @@ export default compose(
     withProps({
         googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `100%` }} />,
-        containerElement: <div style={{ height: `93vh` }} />,
+        containerElement: <div style={{ height: `calc(100vh - 64px)` }} />,
         mapElement: <div style={{ height: `100%` }} />,
     }),
     withScriptjs,
